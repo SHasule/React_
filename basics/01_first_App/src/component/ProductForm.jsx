@@ -1,7 +1,7 @@
  
 import { useState } from "react";
 
- function ProductForm(){
+ function ProductForm(props){
   const[newtitle,setTitle]=useState("")
   const[newdate,setDate]=useState("")
 
@@ -13,13 +13,16 @@ function handledate(e){
 setDate(e.target.value);
 }
 
-function handleForm(e){
+function handleForm(e,props){
   e.preventDefault()
  let changevalue={
    title:newtitle,
    date:newdate,
  }
  console.log(changevalue);
+props.onA(changevalue)
+console.log(`inside ProductForm`);
+
  setDate('')
  setTitle('')
 }
@@ -37,6 +40,8 @@ function handleForm(e){
       <div>
         <button  type="submit">add note</button>
       </div>
+
+      <h2>{props.onMyname}</h2>
     </form>
   )
  }

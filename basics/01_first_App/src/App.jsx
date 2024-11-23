@@ -3,6 +3,7 @@ import Item from '../public/components/Item'
 import ItemPrice from './component/ItemPrice'
 import Card from './component/Card'
 import ProductForm from './component/ProductForm'
+import Child from './component/Child'
 function App() {
 
   const newbrand="moti saban"
@@ -20,9 +21,17 @@ function App() {
      year:"20213"},
   ]
 
+ const Myname="suraj"
+ 
+ function getdata(data){
+  console.log(data);
+  
+ }
+
   return (
     <>
-    <ProductForm></ProductForm>
+    <Child getdata={getdata}/>
+    <ProductForm onMyname={Myname}></ProductForm>
    <Card>
    <ItemPrice name={respones[0].name} rate={respones[0].rate} year={respones[0].year}></ItemPrice>
     <ItemPrice name={respones[1].name} rate={respones[1].rate} year={respones[1].year}></ItemPrice>
