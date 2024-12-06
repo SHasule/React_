@@ -1,62 +1,69 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import logo from "../assets/Logo.svg"
-import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify';
 const Navbar = (props) => {
-  let isloggedin=props.isloggedin
-  let setIsLoggedin=props.setIsLoggedin;
+  const isloggedin=props.isloggedin;
+  const setIsloggedin=props.setIsloggedin;
   return (
-    <div className='flex justify-evenly'>
-   <Link>
-   <img src={logo} alt="logoImg" width={149} loading='lazy' height={29} />
-   </Link>
-  
-  <nav>
-    <ul className='flex gap-3'>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/">About</Link>
-      </li>
-      <li>
-        <Link to="/">Contact</Link>
-      </li>
-    </ul>
-  </nav>
+    <div  className='flex justify-evenly'>
+
+      <Link to="/">
+      <img src={logo} width={145} height={27} loading='lazy ' alt="logo img" />
+      </Link>
+
+      <nav>
+        <ul className='flex gap-4'>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/">About</Link>
+          </li>
+          <li>
+            <Link to="/">Contact</Link>
+          </li>
+        
+        </ul>
 
 
-{/* login signup dashboard logout */}
-  <div className='flex gap-3'>
+        {/* buttons  */}
+
+      </nav>
     
-    {!isloggedin&&
-      <Link to="/login" >
-        <button>Log in</button>
-      </Link>
-    }
+      <div className='flex gap-5'>
+        
+       {!isloggedin&&
+          <Link to="/login">
+            <button >Login</button>
+          </Link>
+        }
 
-    {!isloggedin&&
-      <Link to="/signup" >
-        <button >sign up</button>
-      </Link>
-    }
+        {!isloggedin&&
+          <Link to="/signup">
+            <button>Sign up</button>
+          </Link>
+        }
 
-    {isloggedin&&
-      <Link to="/" >
-        <button onClick={()=>{
-          setIsLoggedin(false)
-          toast.success("Logged out")
-        }} >Log Out</button>
-      </Link>
-    }
+        {isloggedin&&
+          <Link to="/">
+            <button onClick={
+            ()=>{
+              setIsloggedin(false)
+              toast.success("logged out")
+            }}>Log out</button>
+          </Link>
+        }
 
-    {isloggedin&&
-      <Link to="/dashboard" >
-        <button>dashboard</button>
-      </Link>
-    }
-</div>  
- 
+        {isloggedin&&
+          <Link to="/dashboard">
+            <button>Dashboard</button>
+          </Link>
+        }
+
+       </div>
+    
+    
     </div>
   )
 }

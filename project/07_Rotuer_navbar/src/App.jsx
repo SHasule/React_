@@ -1,24 +1,31 @@
-import {React,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Home from './page/Home'
-import Navbar from './component/Navbar'
+import Dashboad from './page/Dashboad'
 import Login from './page/Login'
-import SignUP from './page/SignUP'
-import Dashboard from './page/Dashboard'
-import { Route, Routes } from 'react-router-dom'
+import Signup from './page/SignUP'
+import { Routes , Route} from 'react-router-dom'
+import Navbar from './component/Navbar'
 const App = () => {
-  const [isloggedin, setIsLoggedin] = useState(false)
+  const [isloggedin,setIsloggedin]=useState(false)
+ 
+   useEffect(()=>{
+
+    console.log("inside app");
+    setIsloggedin(false)
+    
+   })
+
   return (
     <div>
-      <Navbar isloggedin={isloggedin} setIsLoggedin={setIsLoggedin}  />
+      <Navbar isloggedin={isloggedin} setIsloggedin={setIsloggedin} />
      
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/signup' element={<SignUP/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>
 
+      <Route path="/" element={<Home/>} />
+      <Route path="/login" element={<Login setIsloggedin={setIsloggedin} />} />
+      <Route path="/signup" element={<Signup setIsloggedin={setIsloggedin}/>} />
+      <Route path="/dashboard" element={<Dashboad/>} />
       </Routes>
-
     </div>
   )
 }
