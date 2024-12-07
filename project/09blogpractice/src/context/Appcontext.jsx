@@ -25,7 +25,7 @@ import { children } from "react";
           
           
            try{
-               const result=await fetch(url);
+               const result=await fetch(url)
                const data= await result.json()  
                console.log(data);
                 setPage(data.page)

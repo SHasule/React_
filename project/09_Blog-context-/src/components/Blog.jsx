@@ -16,14 +16,15 @@ const Blog = () => {
        {
         loading ? (<Loader/>):
         
-        (posts===0?(
-          <div className='mt-3'> 
-            <p>Page not Found</p>
-            </div>
-        ):
+        (posts===0?
+          (
+             <div className='mt-3'> 
+             <p>Page not Found</p>
+             </div>
+          ):
 
-        (
-          posts.map((post)=>(
+           (
+             posts.map((post)=>(
             <div key={post.id}>
               <p className='font-bold text-xl  '>{post.title}</p>
              

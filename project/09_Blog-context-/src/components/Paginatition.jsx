@@ -10,6 +10,7 @@ const Paginatition = () => {
     <div className='flex border-2 w-full bg-white fixed  bottom-0 justify-evenly items-center  py-2 shadow-lg '>
        
        <div className='flex gap-3 '>
+        
        { page>1 &&
         (
            <button  

@@ -16,7 +16,7 @@ const App = () => {
    })
 
   return (
-    <div>
+    <div className='bg-gray-950 ' >
       <Navbar isloggedin={isloggedin} setIsloggedin={setIsloggedin} />
      
       <Routes>
