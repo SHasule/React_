@@ -9,7 +9,6 @@ const Blog = () => {
   const {posts,loading}=useContext(AppContext)
   
   
-
   return (
     <div className='w-11/12 mb-[60px] flex flex-col gap-7 py-2 max-w-[550px] h-screen justify-center items-center  mt-[60px]'>
        

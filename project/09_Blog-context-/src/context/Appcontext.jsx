@@ -3,8 +3,6 @@ import { createContext } from "react";
 import { baseUrl } from "../BaseUrl";
 import { children } from "react";
 
-
-
  export  const AppContext=createContext();
 
  export default function AppContextProvider({children}){
@@ -12,16 +10,19 @@ import { children } from "react";
   const [loading,setloading]=useState(false);
   const[posts,setPost]=useState([]);
   const [page,setPage]=useState(1);
-  const [totalPages,setTotalPages]=useState(null);
- 
-
-  
-  
+  const [totalPages,setTotalPages]=useState(null); 
     
-
        async function fetchBlogPost(page=1){
           setloading(true);
           let url=`${baseUrl}?page=${page}`
+
+          if(tag){
+            url+=`&tag=${tag}`
+          }
+          
+          if(category){
+            url+=`&category=${category}`
+          }
           
           
            try{
