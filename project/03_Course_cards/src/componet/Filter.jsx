@@ -7,6 +7,9 @@ const Filter = ({filterData},props) => {
   function handleCategory(title){
     setcategory(title)
   }
+
+
+  
   return (
     <div>
         {
