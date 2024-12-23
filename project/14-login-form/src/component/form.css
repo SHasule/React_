@@ -1,0 +1,18 @@
+
+
+.notpresent{
+ color: red;
+}
+.active{
+  background-color: rgb(10, 10, 157);
+  color: white;
+  padding-top:6px;
+  padding-bottom:6px;
+  padding-left: 13px;
+  padding-right: 13px;
+  font-size:1.1rem;
+  
+}
+.active:hover{
+  background-color: rgb(55, 55, 217);
+}
