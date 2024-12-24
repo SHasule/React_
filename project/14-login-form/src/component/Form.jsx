@@ -52,7 +52,7 @@ const Form = () => {
   return (
    <div className='bg-slate-50 h-screen border rounded-md w-screen  flex justify-center gap-3 relative items-center'>
 
-<div className='flex  bg-blue-200 border gap-3 absolute top-5 left-60 py-2 px-3'>
+<div className='flex  bg-blue-200 border gap-3 absolute sm:top-40 top-5 left-60 py-2 px-3'>
 <button className={isloggedin ?" active border text-white rounded-md gap-1 " :""}   onClick={()=>setIsloggedin(true)} >Login</button>
 <button className={!isloggedin ? "active border rounded-md  ":""} onClick={()=>setIsloggedin(false)}>signup</button>
 </div>
