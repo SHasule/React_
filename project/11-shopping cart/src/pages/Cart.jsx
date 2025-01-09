@@ -1,57 +1,59 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import Cartitem from "../component/Cartitem";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import Cartitem from "../component/Cartitem"
+import {  useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 const Cart = () => {
-  const [totalAmount, setTotalAmount] = useState(0);
-  const { cart } = useSelector((state) => state);
+ const {cart}=useSelector((state)=>state.cart)
+ const [totalAmountValue,settotalAmountValue]=useState(0)
+ useEffect(()=>{
+        settotalAmountValue(cart.reduce((acc,curVal)=>acc+curVal.price,0))
+ },[])
 
-  useEffect(() => {
-    setTotalAmount(cart.reduce((acc, curval) => acc + curval.price, 0));
-  }, [cart]);
   return (
     <div>
-      <div className="flex">
-        {cart.length > 0 ? (
+          
+          {
+              cart.length >0 ? (
+              <div>
+                {
+                    cart.map((item,index)=>{
+                      return < Cartitem key={index.id} item={item} itemIndex={index}/>
+                    })
+                }
+              </div>
+
+                       
+            ):
+            (<> 
+              <h2>cart is empty</h2>
+             <NavLink to="/">
+             <button>shop now</button>
+             </NavLink>
+              </>)
+          }
+
+
+
           <div>
-            {cart.map((item, index) => {
-              return <Cartitem key={item.id} item={item} itmeIndex={index} />;
-            })}
-
-
-
-           <div>
           <div>
-          <div>Your Cart</div>
-          <div>Summary</div>
-
-          <p>
-            <span>Total Items: {cart.length}</span>
-          </p>
-        </div>
-
-        <div>
-          <p>Total Amount :${totalAmount}</p>
-          <button>CheckOut Now</button>
-        </div>
+                 <div>Your Cart</div>
+              <div>summary</div>
+              <p>
+               <span>total item : {cart.length}</span>
+              </p>
          </div>
+               
 
+               <div>
+                <p>total amount : {totalAmountValue}</p>
+                  <button>
+                    checkout now
+                  </button>
+               </div>
+    
           </div>
-        ) 
-        : 
-        (
-          <div>
-            <h1>Cart Empty</h1>
-            <Link to={"/"}>
-              <button>Shop Now</button>
-            </Link>
-          </div>
-        )}
-      </div>
-
-     
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

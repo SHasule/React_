@@ -1,24 +1,20 @@
-import React from 'react'
-import Navbar from './component/Navbar';
-import { Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import Cart from './pages/Cart';
-
+import { Routes } from "react-router-dom";
+import Navbar from "./component/Navbar";
+import { Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
 
 const App = () => {
-  return (
-    <div>
+  return (<div>
+        <div className="bg-blue-900">
+          <Navbar/>
+          
+        </div>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/cart" element={<Cart/>} />
+        </Routes>
+  </div>)
+};
 
-      <div className='bg-slate-900'>
-      <Navbar />
-      </div>
-      <Routes>
-        <Route path="/" element={<Home/>}  />
-        <Route path="/cart" element={<Cart/>} />
-      </Routes>
-
-    </div>
-  )
-}
-
-export default App
+export default App;
