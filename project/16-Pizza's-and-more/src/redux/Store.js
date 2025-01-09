@@ -1,9 +1,12 @@
-
+import CategorySlice from "./slice/CategorySlice"
 import { configureStore } from "@reduxjs/toolkit";
 import CartSlice from "./slice/CartSlice"
+import  SearchSlice  from "./slice/SearchSlice";
 const Store=configureStore({
   reducer:{
-         cart:CartSlice
+         cart:CartSlice,
+         category:CategorySlice,
+         search:SearchSlice
   }
 })
 

@@ -4,6 +4,7 @@ import ItemCard from "./ItemCard";
 import { FaCartShopping } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { RiTumblrFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 const Card = () => {
   const [isActive, setIsActive] = useState(false);
@@ -14,6 +15,8 @@ const Card = () => {
   const totalQty=cartItem.reduce((totalQty,item)=>totalQty+item.qty,0);
 
   const Total=cartItem.reduce((total,item)=>total + item.qty * item.price,0)
+
+  const navigate=useNavigate()
   return (
     <>
       <div className={`fixed right-0 top-0 w-full h-full bg-white lg:w-[20vw] p-5   
@@ -45,7 +48,8 @@ const Card = () => {
           <h3 className="text-gray-800 ont-semibold">Total Amount: {Total}  </h3>
           <hr className="my-2  lg:w-[18vw] w-[90vw]" />
 
-          <button className="bg-green-500 rounded-lg px-3 py-2 font-bold text-white w-[90vw] lg:w-[18vw] mb-5">
+          <button 
+          onClick={()=>navigate("/success")} className="bg-green-500 rounded-lg px-3 py-2 font-bold text-white w-[90vw] lg:w-[18vw] mb-5">
             Checkout
           </button>
         </div>
