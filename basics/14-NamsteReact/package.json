@@ -1,0 +1,26 @@
+{
+  "name": "14-namstereact",
+  "version": "1.0.0",
+  "description": "restarting first react ",
+  "homepage": "https://github.com/SHasule/React_#readme",
+  "bugs": {
+    "url": "https://github.com/SHasule/React_/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SHasule/React_.git"
+  },
+  "license": "ISC",
+  "author": "suraj hasule",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  }
+}
