@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+
 import './App.css'
 import { useMemo } from 'react';
 import Two from './Two';
@@ -16,9 +17,7 @@ function App() {
    }
    let dubbleValue=useMemo(() =>expensiveFunction(number) , [number])
 
-  
-    
-
+   
   return (
    <div>
      

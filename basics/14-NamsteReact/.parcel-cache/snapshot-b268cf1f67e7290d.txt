@@ -32,7 +32,7 @@
 107D:\study\FullStack_Development\05_React\basics\14-NamsteReact\node_modules\@parcel\resolver-default\LICENSE134254628968656085 0
 106D:\study\FullStack_Development\05_React\basics\14-NamsteReact\node_modules\@parcel\workers\src\cpuCount.js134254628972487750 0
 97D:\study\FullStack_Development\05_React\basics\14-NamsteReact\node_modules\commander\package.json134254628981933951 0
-66D:\study\FullStack_Development\05_React\basics\14-NamsteReact\dist134255518333690580 1
+66D:\study\FullStack_Development\05_React\basics\14-NamsteReact\dist134255641010732190 1
 128D:\study\FullStack_Development\05_React\basics\14-NamsteReact\node_modules\caniuse-lite\data\features\comparedocumentposition.js134254629068374111 0
 124D:\study\FullStack_Development\05_React\basics\14-NamsteReact\node_modules\caniuse-lite\data\features\css-backdrop-filter.js134254629076709926 0
 92D:\study\FullStack_Development\05_React\basics\14-NamsteReact\node_modules\@msgpackr-extract134254628918058516 1
@@ -3608,4 +3608,4 @@
 102D:\study\FullStack_Development\05_React\basics\14-NamsteReact\node_modules\.bin\update-browserslist-db134254629161204984 0
 106D:\study\FullStack_Development\05_React\basics\14-NamsteReact\node_modules\.bin\update-browserslist-db.ps1134254629161204984 0
 97D:\study\FullStack_Development\05_React\basics\14-NamsteReact\dist\14-NamsteReact.3464ddca.js.map134254666588155621 0
-77D:\study\FullStack_Development\05_React\basics\14-NamsteReact\dist\index.html134255518328666535 0
+77D:\study\FullStack_Development\05_React\basics\14-NamsteReact\dist\index.html134255641010712173 0
