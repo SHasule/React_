@@ -1,0 +1,15 @@
+.header{
+    border: 1px solid black;
+    height: 60px;
+     display: flex;
+    justify-content: space-between;
+}
+.nav-item ul{
+   display: flex;
+       gap: 20px;
+   justify-content: space-around;
+   padding: 0 20px;  
+}
+.nav-item ul li{
+    list-style: none;
+}
