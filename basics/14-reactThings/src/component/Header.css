@@ -13,3 +13,6 @@
 .nav-item ul li{
     list-style: none;
 }
+.login{
+    cursor: pointer;
+}

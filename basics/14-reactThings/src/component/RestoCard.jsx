@@ -24,14 +24,14 @@
 // export default RestoCard;
 
 const RestoCard = ({ listOfResto }) => {
-  const { name, cuisines, avgRating, locality,cloudinaryImageId } = listOfResto.info;
+  const { name, cuisines, avgRating, locality,cloudinaryImageId } = listOfResto?.info;
 
 
   return (
     <div className="card-container">
       <img
         className="res-img"
-        src={`RESTO_IMG+${cloudinaryImageId}`}
+        src={RESTO_IMG+cloudinaryImageId}
    />
       <p>{name}</p>
       <p>cuisines: {cuisines.join(", ")}</p>

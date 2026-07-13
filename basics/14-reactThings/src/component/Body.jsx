@@ -9,32 +9,48 @@ const Body = () => {
 const [listOfResto, setListOfResto]=useState([])
 // console.log(listOfResto);
 
+//COPY for filteredUi
+const [cListOfRest,cSetListOfResto]=useState([])
+
+const [searchText,setSearchText]=useState("")
+
 useEffect(
    ()=>{
           fetchData()  
       },[])
 
 const fetchData= async()=>{
- let data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.52110&lng=73.85020&collection=83633&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null")
+ let data=await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.52110&lng=73.85020&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
    let jsondata=await data.json();
-console.log("data", jsondata.data);
+console.log("data", jsondata.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
 
-const restaurants = jsondata.data.cards
-    .filter((card) => card?.card?.card?.info)
-    .map((card) => ({
-      info: card.card.card.info,
-    }));
+const restaurants =jsondata?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
 setListOfResto(restaurants)
+cSetListOfResto(restaurants)
 
 }
 
-if(listOfResto.length===0){
-  return <ShimmerUi/>
-}
 
-  return (
+  return listOfResto.length===0? (
+    <ShimmerUi/>
+  ):(
     <div>
       <div className="filter">
+
+      <div className="search">
+             <input type="text"
+              value={searchText} 
+              onChange={(e)=>{
+               setSearchText(e.target.value)
+             }}/>
+
+             <button onClick={()=>{
+                let filteredRestoBySearch=listOfResto.filter((data)=>data.info.name.toLowerCase().includes(searchText.toLowerCase())) 
+                cSetListOfResto(filteredRestoBySearch)
+             }}>
+              search-btn</button>
+      </div>
+
         <button className="filter-btn" 
            onClick={()=>{
           let filteredResto= listOfResto.filter((val)=>val.info.avgRating>4)
@@ -44,7 +60,7 @@ if(listOfResto.length===0){
         </button>
       </div>
       <div className="body-container">
-        {listOfResto.map((value) => (
+        {cListOfRest.map((value) => (
           <RestoCard key={value.info.id} listOfResto={value} />
         ))}
         

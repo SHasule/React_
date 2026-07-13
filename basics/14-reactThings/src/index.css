@@ -54,3 +54,23 @@
     background-position: -200% 0;
   }
 }
+.filter{
+  display:flex;
+  
+}
+.search{
+ margin: 20px;
+}
+.body-container{
+  display: flex;
+  gap: 40px;
+  padding: 4px;
+  flex-wrap: wrap;
+}
+.filter-btn{
+  margin: 20px;
+  cursor: pointer;
+}
+button{
+  cursor: pointer;
+}
