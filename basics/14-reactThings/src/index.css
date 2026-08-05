@@ -74,3 +74,11 @@
 button{
   cursor: pointer;
 }
+
+.cards-link{
+ list-style: none;
+ text-decoration:none;
+ color: black;
+ /* border: 0.1px solid black; */
+ border-radius: 10px;
+}

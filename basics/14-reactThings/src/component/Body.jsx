@@ -4,6 +4,8 @@ import RestoCard from "./RestoCard";
 import TopRatedResto from "./TopRatedResto";
 import { useState,useEffect } from "react";
 import ShimmerUi from "./ShimmerUi";
+import {Link} from "react-router-dom";
+
 const Body = () => {
 
 const [listOfResto, setListOfResto]=useState([])
@@ -22,12 +24,11 @@ useEffect(
 const fetchData= async()=>{
  let data=await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.52110&lng=73.85020&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
    let jsondata=await data.json();
-console.log("data", jsondata.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+// console.log("data", jsondata.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
 
 const restaurants =jsondata?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
 setListOfResto(restaurants)
 cSetListOfResto(restaurants)
-
 }
 
 
@@ -61,7 +62,10 @@ cSetListOfResto(restaurants)
       </div>
       <div className="body-container">
         {cListOfRest.map((value) => (
+
+        <Link className="cards-link" to={"/restaurant/"+value.info.id} key={value.info.id}>
           <RestoCard key={value.info.id} listOfResto={value} />
+          </Link>
         ))}
         
       </div>
