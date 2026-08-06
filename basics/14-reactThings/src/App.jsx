@@ -5,7 +5,9 @@ import Contact from "./component/Contact";
 import Error from "./component/Error";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import RestoMenu from "./component/RestoMenu";
-
+import { lazy,Suspense} from "react"
+import ShimmerUi from "./component/ShimmerUi" 
+// import Grocery from "./component/Grocery";
 const App = () => {
   return (
     <div>
@@ -14,6 +16,9 @@ const App = () => {
      </div>
   );
 };
+
+const Grocery=lazy(()=>import("./component/Grocery"));
+
 
 const Approute=createBrowserRouter(
   [ 
@@ -32,6 +37,10 @@ const Approute=createBrowserRouter(
       {
          path:"/contact",
          element:<Contact/>
+       },
+       {
+         path:"/grocery",
+         element:<Suspense fallback={<ShimmerUi/>} ><Grocery/></Suspense>
        },
 
        {

@@ -5,6 +5,7 @@ import TopRatedResto from "./TopRatedResto";
 import { useState,useEffect } from "react";
 import ShimmerUi from "./ShimmerUi";
 import {Link} from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
 
@@ -31,6 +32,7 @@ setListOfResto(restaurants)
 cSetListOfResto(restaurants)
 }
 
+const onlineStatus=useOnlineStatus();
 
   return listOfResto.length===0? (
     <ShimmerUi/>
