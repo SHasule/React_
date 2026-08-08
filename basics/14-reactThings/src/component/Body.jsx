@@ -10,7 +10,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
 
 const [listOfResto, setListOfResto]=useState([])
-// console.log(listOfResto);
+// console.log("rendered ", listOfResto);
 
 //COPY for filteredUi
 const [cListOfRest,cSetListOfResto]=useState([])
@@ -38,23 +38,23 @@ const onlineStatus=useOnlineStatus();
     <ShimmerUi/>
   ):(
     <div>
-      <div className="filter">
+      <div className="flex gap-3">
 
-      <div className="search">
-             <input type="text"
+      <div >
+             <input type="text" className="border-[0.2px] border-black px-2 py-1 m-2 rounded-[10px]" 
               value={searchText} 
               onChange={(e)=>{
                setSearchText(e.target.value)
              }}/>
 
-             <button onClick={()=>{
+             <button className="bg-green-300 hover:bg-green-400 text-black font-normal px-2 py-1 rounded" onClick={()=>{
                 let filteredRestoBySearch=listOfResto.filter((data)=>data.info.name.toLowerCase().includes(searchText.toLowerCase())) 
                 cSetListOfResto(filteredRestoBySearch)
              }}>
               search-btn</button>
       </div>
 
-        <button className="filter-btn" 
+        <button className="bg-green-300 hover:bg-green-400 text-black font-normal px-2 py-1 m-2 rounded" 
            onClick={()=>{
           let filteredResto= listOfResto.filter((val)=>val.info.avgRating>4)
            setListOfResto(filteredResto) 
@@ -62,10 +62,13 @@ const onlineStatus=useOnlineStatus();
           Top Rated Restarunt
         </button>
       </div>
-      <div className="body-container">
+    
+    
+    
+      <div className="flex flex-wrap gap-2 my-2 mx-2 rounded justify-evenly">
         {cListOfRest.map((value) => (
 
-        <Link className="cards-link" to={"/restaurant/"+value.info.id} key={value.info.id}>
+        <Link className=" w-56 rounded-lg" to={"/restaurant/"+value.info.id} key={value.info.id}>
           <RestoCard key={value.info.id} listOfResto={value} />
           </Link>
         ))}

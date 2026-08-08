@@ -18,20 +18,21 @@ const RestoMenu = () => {
   resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card || {};
 
     
+  console.log(resInfo);
   
     return (
-    <div>
+    <div className="">
     <h1>{name}</h1>
     <p>{cuisines.join(", ")} - {costForTwoMessage}</p>
     <h2>Menu</h2>
      
-      <ul>
-  {categories.map((category) => (
-    <li key={category.categoryId}>
-      {category.title}
-    </li>
-  ))}
-</ul>
+        <ul>
+            {categories.map((category) => (
+            <li key={category.categoryId}>
+            {category.title}
+            </li>
+            ))}
+        </ul>
 
     </div>
   )
