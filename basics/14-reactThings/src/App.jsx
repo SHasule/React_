@@ -7,13 +7,25 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 import RestoMenu from "./component/RestoMenu";
 import { lazy,Suspense} from "react"
 import ShimmerUi from "./component/ShimmerUi" 
-// import Grocery from "./component/Grocery";
+import {useContext,useState,useEffect} from "react"
+import UserContext from "./utils/UserContext";
 const App = () => {
+const [userName,setUserName]=useState()
+
+  useEffect(() => {
+    const data={
+      user:"suraj"
+    }
+   setUserName(data.user)
+  }, [])
+
   return (
-    <div>
+   
+      <UserContext.Provider value={{LoggedUser:userName}} >
        <Header/> 
        <Outlet/>
-     </div>
+      </UserContext.Provider>
+     
   );
 };
 

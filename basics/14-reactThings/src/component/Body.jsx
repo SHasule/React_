@@ -10,11 +10,10 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
 
 const [listOfResto, setListOfResto]=useState([])
-// console.log("rendered ", listOfResto);
+console.log("rendered ", listOfResto);
 
 //COPY for filteredUi
 const [cListOfRest,cSetListOfResto]=useState([])
-
 const [searchText,setSearchText]=useState("")
 
 useEffect(
@@ -31,6 +30,8 @@ const restaurants =jsondata?.data?.cards[4]?.card?.card?.gridElements?.infoWithS
 setListOfResto(restaurants)
 cSetListOfResto(restaurants)
 }
+
+
 
 const onlineStatus=useOnlineStatus();
 
