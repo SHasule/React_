@@ -9,6 +9,8 @@ import { lazy,Suspense} from "react"
 import ShimmerUi from "./component/ShimmerUi" 
 import {useContext,useState,useEffect} from "react"
 import UserContext from "./utils/UserContext";
+import {Provider} from "react-redux"
+import appStore from "./utils/appStore";
 const App = () => {
 const [userName,setUserName]=useState()
 
@@ -20,11 +22,12 @@ const [userName,setUserName]=useState()
   }, [])
 
   return (
-   
-      <UserContext.Provider value={{LoggedUser:userName}} >
-       <Header/> 
-       <Outlet/>
-      </UserContext.Provider>
+      <Provider store={appStore}>
+          <UserContext.Provider value={{LoggedUser:userName,setUserName}} >
+          <Header/> 
+          <Outlet/>
+          </UserContext.Provider>
+      </Provider>
      
   );
 };

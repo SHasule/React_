@@ -2,11 +2,11 @@ import React from "react";
 import RestoCard from "./RestoCard";
 // import swiggyAIP from "../utils/mockData";
 import TopRatedResto from "./TopRatedResto";
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import ShimmerUi from "./ShimmerUi";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext"
 const Body = () => {
 
 const [listOfResto, setListOfResto]=useState([])
@@ -15,6 +15,7 @@ console.log("rendered ", listOfResto);
 //COPY for filteredUi
 const [cListOfRest,cSetListOfResto]=useState([])
 const [searchText,setSearchText]=useState("")
+const {LoggedUser,setUserName}=useContext(UserContext)
 
 useEffect(
    ()=>{
@@ -62,6 +63,14 @@ const onlineStatus=useOnlineStatus();
           }}>
           Top Rated Restarunt
         </button>
+
+        <div className="p-2">
+           <label >UserName: </label>
+           <input className="border border-black px-2" type="text" 
+              value={LoggedUser} 
+              onChange={(e)=>setUserName(e.target.value)}
+             />
+        </div>
       </div>
     
     

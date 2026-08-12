@@ -1,14 +1,23 @@
 import React from 'react'
 import { RESTO_IMG } from '../utils/constant';
 import img from "../utils/food.png"
+import {useDispatch } from "react-redux"
+import { addItem } from '../utils/cartSlice';
 
 const MenuItemList = ({item,}) => {
     // console.log("item--", item);
-    
+    const dispatch=useDispatch()
+
+    const handleAddItem=()=>{
+         dispatch(addItem("pizaa"))
+    } 
+
   return (
     <div className="border-b-taupe-300 border-b-4 p-5 ">
       <div className=" float-right">
-          <button className="bg-black px-1.5 py-1 text-sm text-white rounded-xl">Add+</button>
+          <button className="bg-black cursor-pointer  px-1.5 py-1
+           text-sm text-white rounded-xl" onClick={handleAddItem}>
+            Add+</button>
          <img className="w-24" src={img} alt="" />
         
          {/* <img src={item.imageId} alt="" /> */}
