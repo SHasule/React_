@@ -11,6 +11,7 @@ import {useContext,useState,useEffect} from "react"
 import UserContext from "./utils/UserContext";
 import {Provider} from "react-redux"
 import appStore from "./utils/appStore";
+import Cart from "./component/Cart";
 const App = () => {
 const [userName,setUserName]=useState()
 
@@ -61,7 +62,11 @@ const Approute=createBrowserRouter(
        {
         path:"/restaurant/:resId",
         element:<RestoMenu/>
-      }
+      },
+      {
+        path:"/cart",
+         element:<Cart/>
+      },
       ],
       errorElement:<Error/>,
       

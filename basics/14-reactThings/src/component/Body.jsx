@@ -10,7 +10,7 @@ import UserContext from "../utils/UserContext"
 const Body = () => {
 
 const [listOfResto, setListOfResto]=useState([])
-console.log("rendered ", listOfResto);
+// console.log("rendered ", listOfResto);
 
 //COPY for filteredUi
 const [cListOfRest,cSetListOfResto]=useState([])

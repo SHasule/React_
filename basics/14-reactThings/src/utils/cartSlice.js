@@ -11,8 +11,11 @@ const cardSlice=createSlice({
     },
     removeItem:(state,action)=>{
         state.item.pop()
+    },
+    clearCart:(state,action)=>{
+        state.item.length=0; //[]
     }
   }
 })
-export const {addItem,removeItem}=cardSlice.actions;
+export const {addItem,removeItem,clearCart}=cardSlice.actions;
 export default cardSlice.reducer;
