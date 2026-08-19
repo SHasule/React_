@@ -10,6 +10,13 @@ const Cart = () => {
     const handleClearCart=()=>{
        dispatch(clearCart())
     }
+   
+     const totalPrice = CartData.reduce(
+        (total, item) => total + (item.price || item.defaultPrice),
+        0
+    );
+      
+   
   return (
     <div className="w-6/12 m-auto">
 
@@ -30,6 +37,13 @@ const Cart = () => {
           item={item}
         />
       ))}
+
+{
+  CartData.length>=1&&<div className="absolute right-80 pt-3 mt-6">
+        total price: {totalPrice/100}
+      </div>
+}
+      
     </div>
   )
 }

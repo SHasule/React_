@@ -10,11 +10,12 @@ const cardSlice=createSlice({
         state.item.push(action.payload)
     },
     removeItem:(state,action)=>{
-        state.item.pop()
+        state.item = state.item.filter(item => item.id !== action.payload);
     },
     clearCart:(state,action)=>{
         state.item.length=0; //[]
-    }
+    },
+   
   }
 })
 export const {addItem,removeItem,clearCart}=cardSlice.actions;
