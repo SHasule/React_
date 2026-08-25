@@ -2,6 +2,9 @@ import React from 'react'
 import Header from './Header'
 import {useState,useRef} from "react"
 import { checkValidation } from '../utils/FormValidation'
+import { auth } from '../utils/FireBase'
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+
 
 const Login = () => {
     const email=useRef(null)
@@ -16,12 +19,44 @@ const Login = () => {
     }
 
     const handleSubmitBTN=()=>{
-        console.log(email.current.value);
-        console.log(password.current.value) 
-
-        const msg=checkValidation(email.current.value,password.current.value,name.current.value) 
-        console.log(msg);
+        const msg=checkValidation(email.current.value,password.current.value) 
         SetErrorMsg(msg)
+        if(msg) return;
+
+        if(!isSignIn){
+            createUserWithEmailAndPassword(auth, email.current.value,password.current.value,name.current.value)
+                      .then((userCredential) => {
+                          // Signed up 
+                          const user = userCredential.user;
+                          console.log(user);
+                          
+                          // ...
+                        })
+                        .catch((error) => {
+                          const errorCode = error.code;
+                          const errorMessage = error.message;
+                          console.log(errorCode +", "+ errorMessage);
+                          
+                          // ..
+                        });
+
+        }
+        else{
+           signInWithEmailAndPassword(auth,email.current.value,password.current.value)
+                    .then((userCredential) => {
+                      // Signed in 
+                      const user = userCredential.user;
+                      console.log(user);
+                      
+                      // ...
+                    })
+                    .catch((error) => {
+                      const errorCode = error.code;
+                      const errorMessage = error.message;
+                      // SetErrorMsg(errorCode+" "+ errorMessage)
+                    });
+
+        }
           
     }
 
