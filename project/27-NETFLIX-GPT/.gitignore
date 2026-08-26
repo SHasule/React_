@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+#about NETFLIXGPT
+ - Created react App
+ - configured tailwind
+ - header
+ - routing app
+ - login form
+ - sign up form
+ - form validation
+ - useRef hook
+ - fireBase setup
+ - deploying our app to production
+ - Create signUp user account
+ - implement sign In user Api
+ - created redux store with userSlice
+ -

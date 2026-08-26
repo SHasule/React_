@@ -35,7 +35,8 @@ const Login = () => {
                         .catch((error) => {
                           const errorCode = error.code;
                           const errorMessage = error.message;
-                          console.log(errorCode +", "+ errorMessage);
+                          // console.log(errorCode +", "+ errorMessage);
+                        SetErrorMsg(error +" "+ errorMessage)
                           
                           // ..
                         });
@@ -53,7 +54,7 @@ const Login = () => {
                     .catch((error) => {
                       const errorCode = error.code;
                       const errorMessage = error.message;
-                      // SetErrorMsg(errorCode+" "+ errorMessage)
+                      SetErrorMsg(errorCode+" "+ errorMessage)
                     });
 
         }
