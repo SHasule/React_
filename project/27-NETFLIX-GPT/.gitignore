@@ -38,4 +38,9 @@ dist-ssr
  - Create signUp user account
  - implement sign In user Api
  - created redux store with userSlice
- -
+ -implemented signOut
+ - update profile api call
+     --bugfix: sign up user and display name update
+     --BugFix: if user not logged in then redirect to login page without going in broswe page
+ ----
+ -fecth movie from TMDB

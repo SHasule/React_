@@ -3,17 +3,24 @@ import Header from './Header'
 import {useState,useRef} from "react"
 import { checkValidation } from '../utils/FormValidation'
 import { auth } from '../utils/FireBase'
-import {createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile } from "firebase/auth";
+import {useNavigate} from "react-router-dom"
+import {useDispatch} from "react-redux"
+import { addUser,removeUser } from '../utils/userSlice'
+import {useEffect} from 'react'
 
 
 const Login = () => {
+
     const email=useRef(null)
     const password=useRef(null)
     const name=useRef(null)
+    const dispatch=useDispatch()
 
     const [isSignIn,setIsSignIn]=useState(true)
     const [errorMsg,SetErrorMsg]=useState(null)
 
+  
     const toggleSignup=()=>{ 
          setIsSignIn(!isSignIn)
     }
@@ -25,21 +32,39 @@ const Login = () => {
 
         if(!isSignIn){
             createUserWithEmailAndPassword(auth, email.current.value,password.current.value,name.current.value)
-                      .then((userCredential) => {
-                          // Signed up 
-                          const user = userCredential.user;
-                          console.log(user);
-                          
-                          // ...
-                        })
-                        .catch((error) => {
-                          const errorCode = error.code;
-                          const errorMessage = error.message;
-                          // console.log(errorCode +", "+ errorMessage);
-                        SetErrorMsg(error +" "+ errorMessage)
-                          
-                          // ..
-                        });
+              .then((userCredential) => {
+                  // Signed up 
+                  const user = userCredential.user;
+                    updateProfile(user, 
+                         {
+                            displayName:name.current.value,
+                            photoURL: "https://avatars.githubusercontent.com/u/117973630?v=4"
+                            }).
+                            then(() => {
+                                  const {uid,email,displayName,photoURL}=auth.currentUser;
+                                  dispatch(
+                                      addUser({
+                                        uid:uid,
+                                        email:email,
+                                        displayName:displayName,
+                                        photoURL:photoURL
+                                      }))
+                             
+                            }).
+                            catch((error) => {
+                              SetErrorMsg(error.message)
+                            });
+
+                  // ...
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  // console.log(errorCode +", "+ errorMessage);
+                SetErrorMsg(error +" "+ errorMessage)
+                  
+                  // ..
+                });
 
         }
         else{
@@ -47,7 +72,7 @@ const Login = () => {
                     .then((userCredential) => {
                       // Signed in 
                       const user = userCredential.user;
-                      console.log(user);
+
                       
                       // ...
                     })
@@ -69,7 +94,7 @@ const Login = () => {
       </div>
 
       <div className=" absolute bg-black w-3/12 text-white right-0 left-0 my-30 mx-auto opacity-80">
-       <from onSubmit={(e)=>e.preventDefault()} className="flex flex-col gap-5 px-3 py-3 m-3">
+       <form onSubmit={(e) => e.preventDefault()}   className="flex flex-col gap-5 px-3 py-3 m-3">
         <h1 className="m-2 font-bold text-3xl">{isSignIn?"Sign In":"Sign Up"}</h1>
         {
             !isSignIn &&   <input ref={name} className="py-2 m-2 px-3 w-full  bg-gray-700" type="text" placeholder="Full Name"/>
@@ -85,7 +110,7 @@ const Login = () => {
           
             <p className="m-2 text-sm cursor-pointer" onClick={toggleSignup}>
                 {isSignIn?<span>New to NetFlix?<span className="text-blue-700 font-bold"> Signup now</span></span>:<span>Already Registered- <span className="font-bold text-blue-700">Sign In now...</span></span>}</p>          
-       </from>
+       </form>
       </div>
     </div>
   )
