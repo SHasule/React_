@@ -23,6 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
+#secret 
+.env
+
 
 #about NETFLIXGPT
  - Created react App
